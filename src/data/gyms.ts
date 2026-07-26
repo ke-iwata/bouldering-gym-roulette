@@ -4,6 +4,14 @@ export interface Gym {
   area: string
   url?: string
   chain?: string
+  instagram?: string
+}
+
+// 公式サイトのスクリーンショットをサムネイルとして利用
+// (WordPress.com の無料スクリーンショットAPI mshots)
+export function gymImageUrl(gym: Gym, width = 480): string | null {
+  if (!gym.url) return null
+  return `https://s0.wp.com/mshots/v1/${encodeURIComponent(gym.url)}?w=${width}`
 }
 
 // 系列ごとのアクセントカラー(一覧のグルーピング表示に使用)
@@ -29,6 +37,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '秋葉原・御茶ノ水',
     url: 'https://pump-climbing.com/gym/akiba/',
     chain: 'PUMP',
+    instagram: 'bpumptokyo',
   },
   {
     id: 'pump-bpump-ogikubo',
@@ -36,6 +45,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '荻窪',
     url: 'https://pump-climbing.com/gym/bpump/',
     chain: 'PUMP',
+    instagram: 'bpump_ogikubo',
   },
 
   // Rocky系列 (rockyclimbing.com)
@@ -45,6 +55,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '品川',
     url: 'https://www.rockyclimbing.com/shinagawa',
     chain: 'Rocky',
+    instagram: 'shina_rocky',
   },
   {
     id: 'rocky-shinjuku-akebonobashi',
@@ -52,6 +63,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '曙橋',
     url: 'https://www.rockyclimbing.com/shinjukuakebonobashi',
     chain: 'Rocky',
+    instagram: 'jyuku_rocky',
   },
   {
     id: 'rocky-ryogoku',
@@ -59,6 +71,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '両国',
     url: 'https://www.rockyclimbing.com/ryougoku/',
     chain: 'Rocky',
+    instagram: 'ryougoku_rocky',
   },
   {
     id: 'rocky-funabashi',
@@ -66,6 +79,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '船橋',
     url: 'https://www.rockyclimbing.com/funabashi/',
     chain: 'Rocky',
+    instagram: 'funabashirocky',
   },
 
   // Base Camp系列 (b-camp.jp)
@@ -75,6 +89,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '新宿',
     url: 'https://b-camp.jp/shinjuku/',
     chain: 'Base Camp',
+    instagram: 'basecamp_shinjuku',
   },
   {
     id: 'basecamp-shinbashi',
@@ -82,6 +97,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '新橋',
     url: 'https://b-camp.jp/shinbashi/',
     chain: 'Base Camp',
+    instagram: 'basecamp_shinbashi',
   },
   {
     id: 'basecamp-edogawabashi',
@@ -89,6 +105,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '江戸川橋',
     url: 'https://b-camp.jp/edogawabashi/',
     chain: 'Base Camp',
+    instagram: 'basecamp_edogawabashi',
   },
   {
     id: 'basecamp-kinshicho',
@@ -96,6 +113,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '錦糸町',
     url: 'https://b-camp.jp/kinshicho/',
     chain: 'Base Camp',
+    instagram: 'basecamp_kinshicho',
   },
   {
     id: 'basecamp-higashimurayama',
@@ -103,6 +121,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '東村山',
     url: 'https://b-camp.jp/higashimurayama/',
     chain: 'Base Camp',
+    instagram: 'basecamp_higashimurayama',
   },
 
   // Fish and Bird系列 (fish-bird.co.jp)
@@ -112,6 +131,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '東陽町',
     url: 'https://fish-bird.co.jp/fishandbird/',
     chain: 'Fish and Bird',
+    instagram: 'fishandbird_toyocho',
   },
 
   // NOBOROCK系列 (noborock-climbing.com)
@@ -121,6 +141,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '新宿',
     url: 'https://noborock-climbing.com/program/%e6%96%b0%e5%ae%bf%e5%ba%97/',
     chain: 'NOBOROCK',
+    instagram: 'noborock_shinjuku',
   },
   {
     id: 'noborock-asakusa',
@@ -128,6 +149,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '浅草',
     url: 'https://noborock-climbing.com/program/%e6%b5%85%e8%8d%89%e5%ba%97/',
     chain: 'NOBOROCK',
+    instagram: 'noborock_asakusa',
   },
   {
     id: 'noborock-takadanobaba',
@@ -135,6 +157,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '高田馬場',
     url: 'https://noborock-climbing.com/program/takadanobaba/',
     chain: 'NOBOROCK',
+    instagram: 'noborock_takadanobaba',
   },
   {
     id: 'noborock-shibuya',
@@ -142,6 +165,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '渋谷',
     url: 'https://noborock-climbing.com/program/shibuya/',
     chain: 'NOBOROCK',
+    instagram: 'noborock_shibuya',
   },
   {
     id: 'noborock-ikebukuro',
@@ -149,6 +173,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '池袋',
     url: 'https://noborock-climbing.com/program/ikebukuro/',
     chain: 'NOBOROCK',
+    instagram: 'noborock_ikebukuro',
   },
 
   // その他(単独店)
@@ -158,6 +183,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '足立・保木間',
     url: 'https://hokimaboulders.com/',
     chain: 'その他',
+    instagram: 'bouldersclimbing',
   },
   {
     id: 'rocklands-kasai',
@@ -165,6 +191,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '葛西',
     url: 'https://www.climbinggymrocklands.com/',
     chain: 'その他',
+    instagram: 'climbinggym_rocklands',
   },
   {
     id: 'underground-higashijujo',
@@ -172,6 +199,7 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '東十条',
     url: 'http://www.underground-climb.com/',
     chain: 'その他',
+    instagram: 'underground_bouldering_gym',
   },
   {
     id: 'beta-akebonobashi',
@@ -179,5 +207,6 @@ export const DEFAULT_GYMS: Gym[] = [
     area: '曙橋',
     url: 'https://beta-climbing.com/',
     chain: 'その他',
+    instagram: 'betaclimb',
   },
 ]

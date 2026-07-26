@@ -122,81 +122,131 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-.chip-grid {
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.gym-card {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.gym-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  border: 1.5px solid #dde2ee;
+  flex-direction: column;
+  border: 2px solid #e3e7f1;
   background: #fff;
-  border-radius: 999px;
-  padding: 9px 16px 9px 12px;
-  font-size: 0.9rem;
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
   font-family: inherit;
+  text-align: left;
   cursor: pointer;
-  color: #445;
-  transition: border-color 0.15s, background 0.15s, color 0.15s, box-shadow 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
 
-.gym-chip:hover {
-  border-color: color-mix(in srgb, var(--chain) 45%, #dde2ee);
+.gym-card:hover {
+  border-color: color-mix(in srgb, var(--chain) 50%, #e3e7f1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(40, 50, 90, 0.1);
 }
 
-.gym-chip .chip-check {
-  display: inline-flex;
+.gym-card.checked {
+  border-color: var(--chain);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--chain) 28%, transparent);
+}
+
+.card-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: color-mix(in srgb, var(--chain) 14%, #f2f4fa);
+  overflow: hidden;
+}
+
+.card-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.card-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 17px;
-  height: 17px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--chain) 55%, #fff);
+}
+
+.card-check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
   border: 1.5px solid #ccd3e3;
   color: transparent;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
-  flex-shrink: 0;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
-.gym-chip.checked {
-  border-color: var(--chain);
-  background: color-mix(in srgb, var(--chain) 9%, #fff);
-  color: #223;
-  box-shadow: 0 1px 6px color-mix(in srgb, var(--chain) 22%, transparent);
-}
-
-.gym-chip.checked .chip-check {
+.gym-card.checked .card-check {
   background: var(--chain);
-  border-color: var(--chain);
+  border-color: #fff;
   color: #fff;
 }
 
-.chip-name {
-  font-weight: 600;
+.card-remove {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  color: #667;
+  font-size: 14px;
+  line-height: 1;
 }
 
-.chip-area {
-  font-size: 0.78rem;
+.card-remove:hover {
+  color: #fff;
+  background: #ef476f;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 11px 11px;
+}
+
+.card-name {
+  font-weight: 700;
+  font-size: 0.86rem;
+  color: #223;
+  line-height: 1.35;
+}
+
+.card-area {
+  font-size: 0.75rem;
   color: #98a0b5;
 }
 
-.gym-chip.checked .chip-area {
-  color: color-mix(in srgb, var(--chain) 75%, #556);
-}
-
-.chip-remove {
-  color: #a5aabb;
-  font-size: 1rem;
-  line-height: 1;
-  padding: 0 2px;
-}
-
-.chip-remove:hover {
-  color: #ef476f;
+.gym-card.checked .card-area {
+  color: color-mix(in srgb, var(--chain) 70%, #556);
 }
 
 /* ---- add gym ---- */
@@ -257,42 +307,142 @@ body {
   gap: 24px;
 }
 
-.wheel-wrap {
+.stage {
   position: relative;
-  width: min(86vw, 420px);
+  width: 100%;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 50% 120%, #2d3960 0%, transparent 60%),
+    linear-gradient(165deg, #171b2e, #232a45);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.35), 0 12px 40px rgba(20, 25, 50, 0.35);
+  padding: 34px 0 30px;
+  overflow: hidden;
 }
 
-.pointer {
+.stage-marker {
   position: absolute;
-  top: -6px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-top: 26px solid #223;
-  z-index: 2;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
+  color: #ffd166;
+  font-size: 18px;
+  z-index: 3;
+  text-shadow: 0 0 12px rgba(255, 209, 102, 0.8);
 }
 
-.wheel {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 50%;
-  box-shadow: 0 8px 30px rgba(40, 50, 90, 0.18);
+.stage::before,
+.stage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 18%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.stage::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(23, 27, 46, 0.95), transparent);
+}
+
+.stage::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(23, 27, 46, 0.95), transparent);
+}
+
+.carousel-viewport {
+  perspective: 1500px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-ring {
+  position: relative;
+  width: 200px;
+  height: 230px;
+  transform-style: preserve-3d;
   will-change: transform;
 }
 
-.wheel-label {
-  font-size: 11px;
+.carousel-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1e2440;
+  border: 2px solid;
+  backface-visibility: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition: box-shadow 0.4s;
+}
+
+.carousel-card.winner {
+  box-shadow:
+    0 0 0 3px rgba(255, 209, 102, 0.9),
+    0 0 40px rgba(255, 209, 102, 0.65),
+    0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: winnerPulse 0.9s ease;
+}
+
+@keyframes winnerPulse {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  30% {
+    filter: brightness(1.5);
+  }
+}
+
+.carousel-media {
+  position: relative;
+  flex: 1;
+  background: #2a3153;
+  overflow: hidden;
+}
+
+.carousel-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.carousel-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.carousel-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 12px 11px;
+}
+
+.carousel-name {
+  color: #fff;
   font-weight: 700;
-  fill: #fff;
-  dominant-baseline: middle;
-  paint-order: stroke;
-  stroke: rgba(0, 0, 0, 0.25);
-  stroke-width: 2px;
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
+.carousel-area {
+  color: #9aa3c4;
+  font-size: 0.72rem;
 }
 
 .roulette-actions {
@@ -323,12 +473,38 @@ body {
 .modal {
   background: #fff;
   border-radius: 20px;
-  padding: 36px 32px;
+  padding: 0 0 32px;
   text-align: center;
-  max-width: 420px;
+  max-width: 440px;
   width: 100%;
+  overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   animation: popIn 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.modal-media {
+  aspect-ratio: 16 / 8;
+  background: #eef1f8;
+  overflow: hidden;
+}
+
+.modal-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.modal-lead {
+  margin-top: 24px;
+}
+
+.modal-gym,
+.modal-area,
+.modal-links,
+.modal-actions {
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .modal-lead {

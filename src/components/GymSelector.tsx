@@ -3,6 +3,7 @@ import {
   CHAIN_COLORS,
   CUSTOM_CHAIN,
   CUSTOM_CHAIN_COLOR,
+  gymImageUrl,
   type Gym,
 } from '../data/gyms'
 
@@ -93,35 +94,53 @@ export default function GymSelector({
                 {count}/{chainGyms.length}
               </span>
             </div>
-            <div className="chip-grid">
+            <div className="card-grid">
               {chainGyms.map((gym) => {
                 const checked = selected.has(gym.id)
+                const img = gymImageUrl(gym)
                 return (
                   <button
                     key={gym.id}
                     type="button"
-                    className={`gym-chip ${checked ? 'checked' : ''}`}
+                    className={`gym-card ${checked ? 'checked' : ''}`}
                     aria-pressed={checked}
                     onClick={() => onToggle(gym.id)}
                   >
-                    <span className="chip-check" aria-hidden>
-                      ✓
-                    </span>
-                    <span className="chip-name">{gym.name}</span>
-                    <span className="chip-area">{gym.area}</span>
-                    {customGymIds.has(gym.id) && (
-                      <span
-                        className="chip-remove"
-                        role="button"
-                        title="このジムを削除"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onRemoveGym(gym.id)
-                        }}
-                      >
-                        ×
+                    <span className="card-media">
+                      <span className="card-placeholder" aria-hidden>
+                        {gym.name.charAt(0)}
                       </span>
-                    )}
+                      {img && (
+                        <img
+                          src={img}
+                          alt=""
+                          loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none'
+                          }}
+                        />
+                      )}
+                      <span className="card-check" aria-hidden>
+                        ✓
+                      </span>
+                      {customGymIds.has(gym.id) && (
+                        <span
+                          className="card-remove"
+                          role="button"
+                          title="このジムを削除"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            onRemoveGym(gym.id)
+                          }}
+                        >
+                          ×
+                        </span>
+                      )}
+                    </span>
+                    <span className="card-body">
+                      <span className="card-name">{gym.name}</span>
+                      <span className="card-area">{gym.area}</span>
+                    </span>
                   </button>
                 )
               })}
