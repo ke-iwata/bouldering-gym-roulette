@@ -116,9 +116,6 @@ export default function RouletteWheel({ gyms, onResult, onBack }: Props) {
             )
           })}
           <circle cx={CENTER} cy={CENTER} r={26} fill="#fff" stroke="#ddd" />
-          <text x={CENTER} y={CENTER + 7} className="wheel-center">
-            🧗
-          </text>
         </svg>
       </div>
 

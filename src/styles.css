@@ -250,11 +250,6 @@ body {
   stroke-width: 2px;
 }
 
-.wheel-center {
-  font-size: 22px;
-  text-anchor: middle;
-}
-
 .roulette-actions {
   display: flex;
   gap: 12px;

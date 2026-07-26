@@ -47,7 +47,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>🧗 ボルダリングジム ルーレット</h1>
+        <h1>ボルダリングジム ルーレット</h1>
         <p className="tagline">明日行くジムをルーレットで決めよう</p>
       </header>
 
