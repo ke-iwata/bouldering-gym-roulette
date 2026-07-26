@@ -5,38 +5,101 @@ export interface Gym {
   url?: string
 }
 
-// 2026年7月時点で営業を確認済みの、都内で人気・メジャーなボルダリングジム
-// (各ジムの公式サイト・SNSで営業状況を確認したうえで掲載)
+// 2026年7月時点で各系列の公式サイトの店舗一覧から確認した、都内の店舗
+// (Rocky / Base Camp / PUMP / Fish and Bird / NOBOROCK の5系列)
 export const DEFAULT_GYMS: Gym[] = [
+  // PUMP系列 (pump-climbing.com)
   {
-    id: 'bpump-akihabara',
+    id: 'pump-bpump-akihabara',
     name: 'B-PUMP TOKYO 秋葉原',
     area: '秋葉原・御茶ノ水',
     url: 'https://pump-climbing.com/gym/akiba/',
   },
   {
-    id: 'bpump-ogikubo',
+    id: 'pump-bpump-ogikubo',
     name: 'B-PUMP OGIKUBO',
     area: '荻窪',
     url: 'https://pump-climbing.com/gym/bpump/',
   },
-  {
-    id: 'pekipeki-shibuya',
-    name: 'PEKIPEKI 渋谷明治通り本店',
-    area: '渋谷',
-    url: 'https://www.pekipeki.jp/shibuya/',
-  },
-  {
-    id: 'beta-akebonobashi',
-    name: 'BETA クライミングジム',
-    area: '曙橋',
-    url: 'https://beta-climbing.com/',
-  },
+
+  // Rocky系列 (rockyclimbing.com)
   {
     id: 'rocky-shinagawa',
     name: 'Rocky 品川店',
     area: '品川',
-    url: 'https://www.rockyclimbing.com/shinagawa/',
+    url: 'https://www.rockyclimbing.com/shinagawa',
+  },
+  {
+    id: 'rocky-shinjuku-akebonobashi',
+    name: 'Rocky 新宿曙橋店',
+    area: '曙橋',
+    url: 'https://www.rockyclimbing.com/shinjukuakebonobashi',
+  },
+  {
+    id: 'rocky-ryogoku',
+    name: 'Rocky 両国店',
+    area: '両国',
+    url: 'https://www.rockyclimbing.com/ryougoku/',
+  },
+
+  // Base Camp系列 (b-camp.jp)
+  {
+    id: 'basecamp-shinjuku',
+    name: 'Urban Base Camp 新宿',
+    area: '新宿',
+    url: 'https://b-camp.jp/shinjuku/',
+  },
+  {
+    id: 'basecamp-shinbashi',
+    name: 'Urban Base Camp 新橋',
+    area: '新橋',
+    url: 'https://b-camp.jp/shinbashi/',
+  },
+  {
+    id: 'basecamp-edogawabashi',
+    name: 'Base Camp Tokyo 江戸川橋',
+    area: '江戸川橋',
+    url: 'https://b-camp.jp/edogawabashi/',
+  },
+  {
+    id: 'basecamp-kinshicho',
+    name: 'Base Camp Tokyo 錦糸町',
+    area: '錦糸町',
+    url: 'https://b-camp.jp/kinshicho/',
+  },
+  {
+    id: 'basecamp-higashimurayama',
+    name: 'Boulder Park Base Camp 東村山',
+    area: '東村山',
+    url: 'https://b-camp.jp/higashimurayama/',
+  },
+
+  // Fish and Bird系列 (fish-bird.co.jp)
+  {
+    id: 'fab-toyocho',
+    name: 'Fish and Bird 東陽町',
+    area: '東陽町',
+    url: 'https://fish-bird.co.jp/fishandbird/',
+  },
+  {
+    id: 'fab-rhino-nippori',
+    name: 'Rhino and Bird 日暮里',
+    area: '日暮里',
+    url: 'https://www.rhino-bird.com/',
+  },
+
+  // NOBOROCK系列 (noborock-climbing.com)
+  {
+    id: 'noborock-shinjuku',
+    name: 'NOBOROCK 新宿店',
+    area: '新宿',
+    url: 'https://noborock-climbing.com/program/%e6%96%b0%e5%ae%bf%e5%ba%97/',
+  },
+  {
+    id: 'noborock-asakusa',
+    name: 'NOBOROCK 浅草店',
+    area: '浅草',
+    url: 'https://noborock-climbing.com/program/%e6%b5%85%e8%8d%89%e5%ba%97/',
   },
   {
     id: 'noborock-takadanobaba',
@@ -45,27 +108,21 @@ export const DEFAULT_GYMS: Gym[] = [
     url: 'https://noborock-climbing.com/program/takadanobaba/',
   },
   {
-    id: 'rocklands-kasai',
-    name: 'ROCKLANDS',
-    area: '葛西',
-    url: 'https://www.climbinggymrocklands.com/',
+    id: 'noborock-shibuya',
+    name: 'NOBOROCK 渋谷店',
+    area: '渋谷',
+    url: 'https://noborock-climbing.com/program/shibuya/',
   },
   {
-    id: 'granny-higashiueno',
-    name: 'ボルダリングジム グラニー',
-    area: '東上野',
-    url: 'https://granny-ueno.com/',
+    id: 'noborock-ikebukuro',
+    name: 'NOBOROCK 池袋店',
+    area: '池袋',
+    url: 'https://noborock-climbing.com/program/ikebukuro/',
   },
   {
-    id: 'twall-kinshicho',
-    name: 'T-WALL 錦糸町店',
-    area: '錦糸町',
-    url: 'https://twall.jp/',
-  },
-  {
-    id: 'escalade-shinjuku',
-    name: 'エスカラード クライミングジム',
-    area: '西新宿',
-    url: 'https://escalade-climbing.com/',
+    id: 'noborock-machida',
+    name: 'NOBOROCK 町田店',
+    area: '町田',
+    url: 'https://noborock-climbing.com/program/machida/',
   },
 ]
