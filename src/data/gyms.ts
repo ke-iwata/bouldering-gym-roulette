@@ -19,16 +19,15 @@ export const CHAIN_COLORS: Record<string, string> = {
   PUMP: '#ef476f',
   Rocky: '#f7822b',
   'Base Camp': '#118ab2',
-  'Fish and Bird': '#06a77d',
   NOBOROCK: '#6a4c93',
-  その他: '#0ca7b0',
+  その他: '#06a77d',
 }
 
 export const CUSTOM_CHAIN = '追加したジム'
 export const CUSTOM_CHAIN_COLOR = '#5f6b85'
 
-// 2026年7月時点で各系列の公式サイトの店舗一覧から確認した、都内の店舗
-// (Rocky / Base Camp / PUMP / Fish and Bird / NOBOROCK の5系列)
+// 2026年7月時点で各公式サイトで営業確認済みの都内中心の店舗
+// (PUMP / Rocky / Base Camp / NOBOROCK の4系列 + 単独店)
 export const DEFAULT_GYMS: Gym[] = [
   // PUMP系列 (pump-climbing.com)
   {
@@ -124,16 +123,6 @@ export const DEFAULT_GYMS: Gym[] = [
     instagram: 'basecamp_higashimurayama',
   },
 
-  // Fish and Bird系列 (fish-bird.co.jp)
-  {
-    id: 'fab-toyocho',
-    name: 'Fish and Bird 東陽町',
-    area: '東陽町',
-    url: 'https://fish-bird.co.jp/fishandbird/',
-    chain: 'Fish and Bird',
-    instagram: 'fishandbird_toyocho',
-  },
-
   // NOBOROCK系列 (noborock-climbing.com)
   {
     id: 'noborock-shinjuku',
@@ -178,6 +167,14 @@ export const DEFAULT_GYMS: Gym[] = [
 
   // その他(単独店)
   {
+    id: 'fab-toyocho',
+    name: 'Fish and Bird 東陽町',
+    area: '東陽町',
+    url: 'https://fish-bird.co.jp/fishandbird/',
+    chain: 'その他',
+    instagram: 'fishandbird_toyocho',
+  },
+  {
     id: 'boulders-hokima',
     name: 'BOULDERS',
     area: '足立・保木間',
@@ -189,7 +186,7 @@ export const DEFAULT_GYMS: Gym[] = [
     id: 'rocklands-kasai',
     name: 'ROCKLANDS',
     area: '葛西',
-    url: 'https://www.climbinggymrocklands.com/',
+    url: 'https://www.rocklands.tokyo/',
     chain: 'その他',
     instagram: 'climbinggym_rocklands',
   },
