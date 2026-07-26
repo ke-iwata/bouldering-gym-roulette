@@ -1,5 +1,10 @@
-import { useState } from 'react'
-import type { Gym } from '../data/gyms'
+import { useState, type CSSProperties } from 'react'
+import {
+  CHAIN_COLORS,
+  CUSTOM_CHAIN,
+  CUSTOM_CHAIN_COLOR,
+  type Gym,
+} from '../data/gyms'
 
 interface Props {
   gyms: Gym[]
@@ -11,6 +16,12 @@ interface Props {
   onRemoveGym: (id: string) => void
   customGymIds: Set<string>
   onConfirm: () => void
+}
+
+interface Section {
+  chain: string
+  color: string
+  gyms: Gym[]
 }
 
 export default function GymSelector({
@@ -29,6 +40,21 @@ export default function GymSelector({
 
   const selected = new Set(selectedIds)
   const canConfirm = selectedIds.length >= 2
+
+  const sections: Section[] = []
+  for (const gym of gyms) {
+    const chain = gym.chain ?? CUSTOM_CHAIN
+    let section = sections.find((s) => s.chain === chain)
+    if (!section) {
+      section = {
+        chain,
+        color: CHAIN_COLORS[chain] ?? CUSTOM_CHAIN_COLOR,
+        gyms: [],
+      }
+      sections.push(section)
+    }
+    section.gyms.push(gym)
+  }
 
   const handleAdd = () => {
     const name = newName.trim()
@@ -52,36 +78,57 @@ export default function GymSelector({
         </div>
       </div>
 
-      <ul className="gym-list">
-        {gyms.map((gym) => {
-          const checked = selected.has(gym.id)
-          return (
-            <li key={gym.id}>
-              <label className={`gym-card ${checked ? 'checked' : ''}`}>
-                <input
-                  type="checkbox"
-                  checked={checked}
-                  onChange={() => onToggle(gym.id)}
-                />
-                <span className="gym-name">{gym.name}</span>
-                {gym.area && <span className="gym-area">{gym.area}</span>}
-                {customGymIds.has(gym.id) && (
+      {sections.map(({ chain, color, gyms: chainGyms }) => {
+        const count = chainGyms.filter((g) => selected.has(g.id)).length
+        return (
+          <div
+            key={chain}
+            className="chain-section"
+            style={{ '--chain': color } as CSSProperties}
+          >
+            <div className="chain-header">
+              <span className="chain-dot" aria-hidden />
+              <span className="chain-name">{chain}</span>
+              <span className="chain-count">
+                {count}/{chainGyms.length}
+              </span>
+            </div>
+            <div className="chip-grid">
+              {chainGyms.map((gym) => {
+                const checked = selected.has(gym.id)
+                return (
                   <button
-                    className="gym-remove"
-                    title="このジムを削除"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      onRemoveGym(gym.id)
-                    }}
+                    key={gym.id}
+                    type="button"
+                    className={`gym-chip ${checked ? 'checked' : ''}`}
+                    aria-pressed={checked}
+                    onClick={() => onToggle(gym.id)}
                   >
-                    ×
+                    <span className="chip-check" aria-hidden>
+                      ✓
+                    </span>
+                    <span className="chip-name">{gym.name}</span>
+                    <span className="chip-area">{gym.area}</span>
+                    {customGymIds.has(gym.id) && (
+                      <span
+                        className="chip-remove"
+                        role="button"
+                        title="このジムを削除"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          onRemoveGym(gym.id)
+                        }}
+                      >
+                        ×
+                      </span>
+                    )}
                   </button>
-                )}
-              </label>
-            </li>
-          )
-        })}
-      </ul>
+                )
+              })}
+            </div>
+          </div>
+        )
+      })}
 
       <div className="add-gym">
         <input
@@ -107,7 +154,7 @@ export default function GymSelector({
       <div className="confirm-bar">
         <span className="confirm-count">{selectedIds.length} 件選択中</span>
         <button className="btn btn-primary" onClick={onConfirm} disabled={!canConfirm}>
-          {canConfirm ? '候補を確定してルーレットへ 🎡' : '2件以上選んでください'}
+          {canConfirm ? '候補を確定してルーレットへ' : '2件以上選んでください'}
         </button>
       </div>
     </section>

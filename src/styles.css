@@ -91,66 +91,111 @@ body {
   font-size: 1.15rem;
 }
 
-.gym-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+.chain-section {
+  margin-bottom: 18px;
+}
+
+.chain-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.chain-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--chain);
+  align-self: center;
+}
+
+.chain-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+}
+
+.chain-count {
+  font-size: 0.78rem;
+  color: #8892a8;
+  font-variant-numeric: tabular-nums;
+}
+
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
-.gym-card {
-  display: flex;
+.gym-chip {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
+  border: 1.5px solid #dde2ee;
   background: #fff;
-  border: 2px solid #e2e6f0;
-  border-radius: 12px;
-  padding: 12px 14px;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
-}
-
-.gym-card:hover {
-  border-color: #c5cde0;
-}
-
-.gym-card.checked {
-  border-color: #ef476f;
-  background: #fff5f8;
-}
-
-.gym-card input {
-  accent-color: #ef476f;
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-.gym-name {
-  font-weight: 600;
-  font-size: 0.95rem;
-  flex: 1;
-}
-
-.gym-area {
-  font-size: 0.8rem;
-  color: #778;
-  background: #eef1f8;
   border-radius: 999px;
-  padding: 3px 10px;
-  white-space: nowrap;
-}
-
-.gym-remove {
-  border: none;
-  background: transparent;
-  color: #a5aabb;
-  font-size: 1.1rem;
+  padding: 9px 16px 9px 12px;
+  font-size: 0.9rem;
+  font-family: inherit;
   cursor: pointer;
-  padding: 0 4px;
+  color: #445;
+  transition: border-color 0.15s, background 0.15s, color 0.15s, box-shadow 0.15s;
 }
 
-.gym-remove:hover {
+.gym-chip:hover {
+  border-color: color-mix(in srgb, var(--chain) 45%, #dde2ee);
+}
+
+.gym-chip .chip-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1.5px solid #ccd3e3;
+  color: transparent;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.gym-chip.checked {
+  border-color: var(--chain);
+  background: color-mix(in srgb, var(--chain) 9%, #fff);
+  color: #223;
+  box-shadow: 0 1px 6px color-mix(in srgb, var(--chain) 22%, transparent);
+}
+
+.gym-chip.checked .chip-check {
+  background: var(--chain);
+  border-color: var(--chain);
+  color: #fff;
+}
+
+.chip-name {
+  font-weight: 600;
+}
+
+.chip-area {
+  font-size: 0.78rem;
+  color: #98a0b5;
+}
+
+.gym-chip.checked .chip-area {
+  color: color-mix(in srgb, var(--chain) 75%, #556);
+}
+
+.chip-remove {
+  color: #a5aabb;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.chip-remove:hover {
   color: #ef476f;
 }
 
