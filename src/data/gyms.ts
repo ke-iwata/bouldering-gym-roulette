@@ -2,23 +2,70 @@ export interface Gym {
   id: string
   name: string
   area: string
+  url?: string
 }
 
-// 都内(および近郊)の主要ボルダリングジム
+// 2026年7月時点で営業を確認済みの、都内で人気・メジャーなボルダリングジム
+// (各ジムの公式サイト・SNSで営業状況を確認したうえで掲載)
 export const DEFAULT_GYMS: Gym[] = [
-  { id: 'bpump-akihabara', name: 'B-PUMP TOKYO 秋葉原', area: '秋葉原' },
-  { id: 'bpump-ogikubo', name: 'B-PUMP 荻窪', area: '荻窪' },
-  { id: 'rocky-shinagawa', name: 'Rocky 品川', area: '品川' },
-  { id: 'rocky-akebonobashi', name: 'Rocky 新宿曙橋', area: '曙橋' },
-  { id: 'noborock-takadanobaba', name: 'NOBOROCK 高田馬場', area: '高田馬場' },
-  { id: 'noborock-machida', name: 'NOBOROCK 町田', area: '町田' },
-  { id: 'energy-koenji', name: 'クライミングジムエナジー 高円寺', area: '高円寺' },
-  { id: 'twall-kinshicho', name: 'T-WALL 錦糸町', area: '錦糸町' },
-  { id: 'pekipeki-shibuya', name: 'PEKIPEKI 渋谷', area: '渋谷' },
-  { id: 'fishandbird-toyocho', name: 'Fish and Bird 東陽町', area: '東陽町' },
-  { id: 'gravity-shinjuku', name: 'GRAVITY RESEARCH 新宿', area: '新宿' },
-  { id: 'basecamp-iriya', name: 'BaseCamp 入谷', area: '入谷' },
-  { id: 'apex-nakano', name: 'APEX CLIMBING GYM 新中野', area: '新中野' },
-  { id: 'folk-oimachi', name: 'folkstone climbing 大井町', area: '大井町' },
-  { id: 'dogwood-sakuragaoka', name: 'CLIMBING GYM DOGWOOD 調布', area: '調布' },
+  {
+    id: 'bpump-akihabara',
+    name: 'B-PUMP TOKYO 秋葉原',
+    area: '秋葉原・御茶ノ水',
+    url: 'https://pump-climbing.com/gym/akiba/',
+  },
+  {
+    id: 'bpump-ogikubo',
+    name: 'B-PUMP OGIKUBO',
+    area: '荻窪',
+    url: 'https://pump-climbing.com/gym/bpump/',
+  },
+  {
+    id: 'pekipeki-shibuya',
+    name: 'PEKIPEKI 渋谷明治通り本店',
+    area: '渋谷',
+    url: 'https://www.pekipeki.jp/shibuya/',
+  },
+  {
+    id: 'beta-akebonobashi',
+    name: 'BETA クライミングジム',
+    area: '曙橋',
+    url: 'https://beta-climbing.com/',
+  },
+  {
+    id: 'rocky-shinagawa',
+    name: 'Rocky 品川店',
+    area: '品川',
+    url: 'https://www.rockyclimbing.com/shinagawa/',
+  },
+  {
+    id: 'noborock-takadanobaba',
+    name: 'NOBOROCK 高田馬場店',
+    area: '高田馬場',
+    url: 'https://noborock-climbing.com/program/takadanobaba/',
+  },
+  {
+    id: 'rocklands-kasai',
+    name: 'ROCKLANDS',
+    area: '葛西',
+    url: 'https://www.climbinggymrocklands.com/',
+  },
+  {
+    id: 'granny-higashiueno',
+    name: 'ボルダリングジム グラニー',
+    area: '東上野',
+    url: 'https://granny-ueno.com/',
+  },
+  {
+    id: 'twall-kinshicho',
+    name: 'T-WALL 錦糸町店',
+    area: '錦糸町',
+    url: 'https://twall.jp/',
+  },
+  {
+    id: 'escalade-shinjuku',
+    name: 'エスカラード クライミングジム',
+    area: '西新宿',
+    url: 'https://escalade-climbing.com/',
+  },
 ]

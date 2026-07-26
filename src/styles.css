@@ -303,6 +303,27 @@ body {
   margin-bottom: 8px;
 }
 
+.modal-links {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-outline {
+  display: inline-block;
+  border-color: #ef476f;
+  color: #ef476f;
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 8px 14px;
+}
+
+.btn-outline:hover {
+  background: #fff5f8;
+}
+
 .modal-actions {
   display: flex;
   gap: 10px;
