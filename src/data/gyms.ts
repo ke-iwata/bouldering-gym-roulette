@@ -13,6 +13,7 @@ export const CHAIN_COLORS: Record<string, string> = {
   'Base Camp': '#118ab2',
   'Fish and Bird': '#06a77d',
   NOBOROCK: '#6a4c93',
+  その他: '#0ca7b0',
 }
 
 export const CUSTOM_CHAIN = '追加したジム'
@@ -57,6 +58,13 @@ export const DEFAULT_GYMS: Gym[] = [
     name: 'Rocky 両国店',
     area: '両国',
     url: 'https://www.rockyclimbing.com/ryougoku/',
+    chain: 'Rocky',
+  },
+  {
+    id: 'rocky-funabashi',
+    name: 'Rocky 船橋店',
+    area: '船橋',
+    url: 'https://www.rockyclimbing.com/funabashi/',
     chain: 'Rocky',
   },
 
@@ -105,13 +113,6 @@ export const DEFAULT_GYMS: Gym[] = [
     url: 'https://fish-bird.co.jp/fishandbird/',
     chain: 'Fish and Bird',
   },
-  {
-    id: 'fab-rhino-nippori',
-    name: 'Rhino and Bird 日暮里',
-    area: '日暮里',
-    url: 'https://www.rhino-bird.com/',
-    chain: 'Fish and Bird',
-  },
 
   // NOBOROCK系列 (noborock-climbing.com)
   {
@@ -149,11 +150,34 @@ export const DEFAULT_GYMS: Gym[] = [
     url: 'https://noborock-climbing.com/program/ikebukuro/',
     chain: 'NOBOROCK',
   },
+
+  // その他(単独店)
   {
-    id: 'noborock-machida',
-    name: 'NOBOROCK 町田店',
-    area: '町田',
-    url: 'https://noborock-climbing.com/program/machida/',
-    chain: 'NOBOROCK',
+    id: 'boulders-hokima',
+    name: 'BOULDERS',
+    area: '足立・保木間',
+    url: 'https://hokimaboulders.com/',
+    chain: 'その他',
+  },
+  {
+    id: 'rocklands-kasai',
+    name: 'ROCKLANDS',
+    area: '葛西',
+    url: 'https://www.climbinggymrocklands.com/',
+    chain: 'その他',
+  },
+  {
+    id: 'underground-higashijujo',
+    name: 'UNDERGROUND',
+    area: '東十条',
+    url: 'http://www.underground-climb.com/',
+    chain: 'その他',
+  },
+  {
+    id: 'beta-akebonobashi',
+    name: 'BETA クライミングジム',
+    area: '曙橋',
+    url: 'https://beta-climbing.com/',
+    chain: 'その他',
   },
 ]
